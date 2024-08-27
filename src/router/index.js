@@ -1,12 +1,30 @@
 import PageEmpty from '@/pages/empty.vue';
 import Layout from '@/layouts/index.vue';
 
+/**
+ * demo路由
+ */
+const demoRoutes = [
+  {
+    path: `/demo/micromainComponent`,
+    name: `micromainComponent`,
+    component: () => import('@/pages/demo/micromainComponent.vue'),
+    meta: {},
+  },
+  {
+    path: `/demo/routeComponent`,
+    name: `routeComponent`,
+    component: () => import('@/pages/demo/routeComponent.vue'),
+    meta: {},
+  },
+];
+
 /** 基础路由 */
 export const baseRoutes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import("@/pages/login.vue"),
+    component: () => import('@/pages/login.vue'),
     meta: { title: '登录页', parentComponent: Layout },
   },
   {
@@ -17,15 +35,16 @@ export const baseRoutes = [
     meta: {},
   },
   {
-    path: "/404",
-    name: "page-404",
-    component: () => import("@/pages/404.vue"),
-    meta: { title: "不存在该页面", parentComponent: Layout },
+    path: '/404',
+    name: 'page-404',
+    component: () => import('@/pages/404.vue'),
+    meta: { title: '不存在该页面', parentComponent: Layout },
   },
   {
-    path: "/403",
-    name: "page-401",
-    component: () => import("@/pages/403.vue"),
-    meta: { title: "暂无权限访问", parentComponent: Layout },
+    path: '/403',
+    name: 'page-401',
+    component: () => import('@/pages/403.vue'),
+    meta: { title: '暂无权限访问', parentComponent: Layout },
   },
+  ...demoRoutes,
 ];

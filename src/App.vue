@@ -1,6 +1,5 @@
 <template>
-  <div id="app">
-    vue2子应用
+  <div>
     <router-view class=""></router-view>
   </div>
 </template>
