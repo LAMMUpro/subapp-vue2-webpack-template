@@ -1,17 +1,16 @@
 <template>
-  <div id="app">
-    vue2子应用
+  <div style="font-size: 200px;">
+    Layout
     <router-view class=""></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
-  components: {},
-};
+  
+}
 </script>
 
-<style>
-/**  */
+<style>/** */
+
 </style>
