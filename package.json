@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "deploy": "s deploy -t s.master.yaml --use-local"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -14,6 +15,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "local-tool": "^1.1.2",
     "vue-template-compiler": "^2.6.14"
   }
 }

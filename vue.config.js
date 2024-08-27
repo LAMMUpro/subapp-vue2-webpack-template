@@ -15,4 +15,5 @@ module.exports = defineConfig({
   },
   transpileDependencies: true,
   productionSourceMap: false,
+  outputDir: './build'
 });
