@@ -1,5 +1,5 @@
-import PageEmpty from '@/pages/empty.vue';
 import Layout from '@/layouts/index.vue';
+import MicroComponent from 'micro-app-utils/vue2/MicroComponent.vue';
 
 /**
  * demo路由
@@ -22,28 +22,45 @@ const demoRoutes = [
 /** 基础路由 */
 export const baseRoutes = [
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/pages/login.vue'),
-    meta: { title: '登录页', parentComponent: Layout },
-  },
-  {
-    /** 空白中转路由 */
     path: '/empty',
-    name: 'empty',
-    component: PageEmpty,
+    name: 'PageEmpty',
+    component: {
+      render(createElement) {
+        return createElement(MicroComponent, {
+          props: {
+            _is: 'PageEmpty',
+          },
+        });
+      },
+    },
     meta: {},
   },
   {
     path: '/404',
-    name: 'page-404',
-    component: () => import('@/pages/404.vue'),
+    name: 'Page404',
+    component: {
+      render(createElement) {
+        return createElement(MicroComponent, {
+          props: {
+            _is: 'Page404',
+          },
+        });
+      },
+    },
     meta: { title: '不存在该页面', parentComponent: Layout },
   },
   {
     path: '/403',
-    name: 'page-401',
-    component: () => import('@/pages/403.vue'),
+    name: 'Page403',
+    component: {
+      render(createElement) {
+        return createElement(MicroComponent, {
+          props: {
+            _is: 'Page403',
+          },
+        });
+      },
+    },
     meta: { title: '暂无权限访问', parentComponent: Layout },
   },
   ...demoRoutes,
