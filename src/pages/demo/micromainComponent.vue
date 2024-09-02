@@ -34,7 +34,7 @@
         class="btn"
         @click="open()"
       >
-        打开弹窗
+        打开弹窗: {{ formInfo.number }}
       </button>
       <MicroComponent
         _is="BaseDialog"
@@ -42,16 +42,18 @@
         @update:modelValue="val => show = val"
         title="主应用的弹窗"
       >
-        <div>
-          <div>默认插槽：{{ formInfo.number }}</div>
-          <button
-            class="btn"
-            style="background-color: lightskyblue"
-            @click="add()"
-          >
-            点击计数器加1
-          </button>
-        </div>
+        <template #default>
+          <div>
+            <div>默认插槽：{{ formInfo.number }}</div>
+            <button
+              class="btn"
+              style="background-color: lightskyblue"
+              @click="add()"
+            >
+              点击计数器加1
+            </button>
+          </div>
+        </template>
         <template #footer>
           <button
             class="btn"
