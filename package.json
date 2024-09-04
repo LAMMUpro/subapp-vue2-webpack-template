@@ -8,6 +8,8 @@
     "deploy": "s deploy -t s.master.yaml --use-local"
   },
   "dependencies": {
+    "@micro-zoe/micro-app": "1.0.0-rc.8",
+    "micro-app-utils": "workspace:*",
     "core-js": "^3.8.3",
     "vue": "^2.7.16",
     "vue-router": "^3.6.5"
