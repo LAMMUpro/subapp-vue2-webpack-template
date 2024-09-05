@@ -17,6 +17,12 @@ const demoRoutes = [
     component: () => import('@/pages/demo/routeComponent.vue'),
     meta: {},
   },
+  {
+    path: `/home`,
+    name: `home`,
+    component: () => import('@/pages/home.vue'),
+    meta: {},
+  },
 ];
 
 /** 基础路由 */
