@@ -1,5 +1,5 @@
 {
-  "name": "subapp-vue2-template",
+  "name": "subapp-vue2-webpack-template",
   "version": "1.0.0",
   "private": true,
   "scripts": {
