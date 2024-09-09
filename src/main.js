@@ -11,6 +11,8 @@ import microApp from '@micro-zoe/micro-app';
 
 Vue.use(VueRouter);
 
+window._subAppSettingList_ = window.rawWindow?._subAppSettingList_ || [];
+
 /** 初始化微前端配置 */
 MicroAppInit({
   env: process.env.NODE_ENV === 'development' ? 'localhost' : 'master',
@@ -27,64 +29,7 @@ MicroAppInit({
       });
     },
   }),
-  subAppSettingList: [
-    {
-      name: 'micromain',
-      prefix: 'micromain',
-      routerMode: 'history',
-      urlMap: {
-        localhost: '//127.0.0.1:1314/micromain/',
-        test: 'https://micro-admin-template.lammu.cn/micromain/',
-        pre: 'https://micro-admin-template.lammu.cn/micromain/',
-        master: 'https://micro-admin-template.lammu.cn/micromain/',
-      },
-      builder: 'vite',
-      iframe: true,
-      framework: 'vue3',
-    },
-    {
-      name: 'vue3',
-      prefix: 'vue3',
-      routerMode: 'hash',
-      urlMap: {
-        localhost: '//127.0.0.1:1320/vue3/',
-        test: 'https://micro-admin-template.lammu.cn/vue3/',
-        pre: 'https://micro-admin-template.lammu.cn/vue3/',
-        master: 'https://micro-admin-template.lammu.cn/vue3/',
-      },
-      builder: 'vite',
-      iframe: true,
-      framework: 'vue3',
-    },
-    {
-      name: 'vue2',
-      prefix: 'vue2',
-      routerMode: 'hash',
-      urlMap: {
-        localhost: '//127.0.0.1:1330/vue2/',
-        test: 'https://micro-admin-template.lammu.cn/vue2/',
-        pre: 'https://micro-admin-template.lammu.cn/vue2/',
-        master: 'https://micro-admin-template.lammu.cn/vue2/',
-      },
-      builder: 'webpack',
-      iframe: false,
-      framework: 'vue2',
-    },
-    {
-      name: 'react18',
-      prefix: 'react18',
-      routerMode: 'hash',
-      urlMap: {
-        localhost: '//127.0.0.1:1340/react18/',
-        test: 'https://micro-admin-template.lammu.cn/react18/',
-        pre: 'https://micro-admin-template.lammu.cn/react18/',
-        master: 'https://micro-admin-template.lammu.cn/react18/',
-      },
-      builder: 'vite',
-      iframe: true,
-      framework: 'react18',
-    },
-  ],
+  subAppSettingList: window._subAppSettingList_,
 });
 
 /** 启动微前端 */
