@@ -37,7 +37,7 @@
         打开弹窗: {{ formInfo.number }}
       </button>
       <MicroComponent
-        _is="BaseDialog"
+        _is="ElDialog"
         :modelValue="show"
         @update:modelValue="(val) => (show = val)"
         title="主应用的弹窗"
