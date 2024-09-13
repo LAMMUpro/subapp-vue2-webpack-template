@@ -1,5 +1,5 @@
 import Layout from '@/layouts/index.vue';
-import { isSubApp } from 'micro-app-utils';
+import { isTopApp } from 'micro-app-utils';
 
 /** 
  * 处理路由meta的parentComponent
@@ -11,7 +11,7 @@ export function parseRoutesMetaParentComponent(
   /** 是否强制添加Layout(条件匹配下) */
   forceAdd = false
 ) {
-  if (!isSubApp) {
+  if (isTopApp) {
     return routes.map(item => {
       if (forceAdd || item.meta?.parentComponent) {
         return {
