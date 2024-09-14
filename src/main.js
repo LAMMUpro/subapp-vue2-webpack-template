@@ -35,6 +35,13 @@ MicroAppInit({
         parameters: [elementId],
       });
     },
+    /** 子应用接收到这个请求需要往上传递，直到传给顶部主应用 */
+    micro_component_clear_props_slots: (elementId) => {
+      sendDataUp({
+        emitName: 'micro_component_clear_props_slots',
+        parameters: [elementId],
+      });
+    },
   }),
   subAppSettingList: window._subAppSettingList_,
 });
