@@ -15,5 +15,24 @@ module.exports = defineConfig({
   },
   transpileDependencies: true,
   productionSourceMap: false,
-  outputDir: './build'
+  outputDir: './build',
+  /** 
+   * webpack配置
+   */
+  configureWebpack: {
+    module: {
+      rules: [
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env', '@babel/preset-react'],
+            },
+          },
+        },
+      ],
+    },
+  },
 });
