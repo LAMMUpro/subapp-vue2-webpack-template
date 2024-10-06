@@ -18,6 +18,12 @@ const demoRoutes = [
     meta: {},
   },
   {
+    path: `/demo/reactComponent`,
+    name: `reactComponent`,
+    component: () => import('@/pages/demo/reactComponent.vue'),
+    meta: {},
+  },
+  {
     path: `/home`,
     name: `home`,
     component: () => import('@/pages/home.vue'),
