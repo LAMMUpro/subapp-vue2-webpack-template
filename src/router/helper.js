@@ -1,5 +1,5 @@
 import Layout from '@/layouts/index.vue';
-import { isTopApp } from 'micro-app-utils';
+import { isTopApp } from 'micro-app-tools';
 
 /** 
  * 处理路由meta的parentComponent
@@ -18,7 +18,7 @@ export function parseRoutesMetaParentComponent(
           path: '/',
           name: 'LayoutDevAutoAdd' + Date.now() + Math.random().toString(36).substring(2),
           component: forceAdd ? Layout : item.meta?.parentComponent,
-          children: [ item ],
+          children: [item],
         }
       }
       return item;

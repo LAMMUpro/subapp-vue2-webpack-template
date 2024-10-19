@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import MicroComponent from 'micro-app-utils/vue2/MicroComponent.vue';
+import MicroComponent from 'micro-app-tools/vue2/MicroComponent.vue';
 
 export default {
   components: {

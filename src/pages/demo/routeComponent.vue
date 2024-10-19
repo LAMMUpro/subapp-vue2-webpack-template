@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import MicroApp from 'micro-app-utils/vue2/MicroApp.vue';
+import MicroApp from 'micro-app-tools/vue2/MicroApp.vue';
 
 export default {
   components: {

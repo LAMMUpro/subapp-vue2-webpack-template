@@ -1,5 +1,5 @@
 import Layout from '@/layouts/index.vue';
-import MicroComponent from 'micro-app-utils/vue2/MicroComponent.vue';
+import MicroComponent from 'micro-app-tools/vue2/MicroComponent.vue';
 
 /**
  * demo路由

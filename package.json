@@ -10,7 +10,6 @@
   "dependencies": {
     "@micro-zoe/micro-app": "1.0.0-rc.8",
     "core-js": "^3.8.3",
-    "micro-app-utils": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "vue": "^2.7.16",
