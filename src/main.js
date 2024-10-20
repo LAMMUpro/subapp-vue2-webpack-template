@@ -6,55 +6,63 @@ import { baseRoutes } from '@/router';
 import { parseRoutesMetaParentComponent } from '@/router/helper';
 import { isTopApp, sendDataDown, sendDataUp, MicroAppInit } from 'micro-app-tools';
 import { generateDataListener } from 'micro-app-tools/listener';
-import { MicroComponentSlotMap } from 'micro-app-tools/data';
+import { MicroAppConfig, MicroComponentSlotMap, setMicroAppInitFunction } from 'micro-app-tools/data';
 import microApp from '@micro-zoe/micro-app';
 
 Vue.use(VueRouter);
 
+/** 从父应用获取子应用配置 */
 window._subAppSettingList_ = window.rawWindow?._subAppSettingList_ || [];
+/** 虽然微前端环境初始化延迟了, 但这个配置还是要提前传过去 */
+MicroAppConfig.subAppSettingList = window._subAppSettingList_;
 
-/** 初始化微前端配置 */
-MicroAppInit({
-  env: process.env.NODE_ENV === 'development' ? 'localhost' : 'master',
-  tagName: CONSTS.microAppTagName,
-  dataListener: generateDataListener({
-    /** 子应用接收到这个请求需要往上传递，直到传给顶部主应用 */
-    micro_component_request: (data) => {
-      sendDataUp({
-        emitName: 'micro_component_request',
-        parameters: [{
-          ...data,
-          subAppNameList: [...data.subAppNameList, window.__MICRO_APP_NAME__]
-        }],
-      });
-    },
-    /** 子应用接收到这个请求需要往上传递，直到传给顶部主应用 */
-    micro_component_destroy: (elementId) => {
-      sendDataUp({
-        emitName: 'micro_component_destroy',
-        parameters: [elementId],
-      });
-    },
-    /** 子应用接收到这个请求需要往上传递，直到传给顶部主应用 */
-    micro_component_clear_props_slots: (elementId) => {
-      sendDataUp({
-        emitName: 'micro_component_clear_props_slots',
-        parameters: [elementId],
-      });
-    },
-  }),
-  subAppSettingList: window._subAppSettingList_,
-});
-
-/** 
- * 初始化子应用渲染环境（默认主应用/第一层子应用执行）
+/**
+ * 微前端环境并非一开始就初始化, 要等使用MicroApp时才决定是否初始化
  */
-if (window._subAppSettingList_.find(item => item.name === window.__MICRO_APP_NAME__)) microApp.start({
-  tagName: CONSTS.microAppTagName,
-  /** 防止子应用请求父应用资源（部署时需要配置这个url指向这个文件） */
-  iframeSrc: `/micromain/empty.html`,
-  'keep-router-state': true,
-});
+setMicroAppInitFunction(() => {
+  /** 初始化微前端配置 */
+  MicroAppInit({
+    env: process.env.NODE_ENV === 'development' ? 'localhost' : 'master',
+    tagName: CONSTS.microAppTagName,
+    dataListener: generateDataListener({
+      /** 子应用接收到这个请求需要往上传递，直到传给顶部主应用 */
+      micro_component_request: (data) => {
+        sendDataUp({
+          emitName: 'micro_component_request',
+          parameters: [{
+            ...data,
+            subAppNameList: [...data.subAppNameList, window.__MICRO_APP_NAME__]
+          }],
+        });
+      },
+      /** 子应用接收到这个请求需要往上传递，直到传给顶部主应用 */
+      micro_component_destroy: (elementId) => {
+        sendDataUp({
+          emitName: 'micro_component_destroy',
+          parameters: [elementId],
+        });
+      },
+      /** 子应用接收到这个请求需要往上传递，直到传给顶部主应用 */
+      micro_component_clear_props_slots: (elementId) => {
+        sendDataUp({
+          emitName: 'micro_component_clear_props_slots',
+          parameters: [elementId],
+        });
+      },
+    }),
+    subAppSettingList: window._subAppSettingList_,
+  });
+
+  /** 
+   * 初始化子应用渲染环境（默认主应用/第一层子应用执行）
+   */
+  microApp.start({
+    tagName: CONSTS.microAppTagName,
+    /** 防止子应用请求父应用资源（部署时需要配置这个url指向这个文件） */
+    iframeSrc: `/micromain/empty.html`,
+    'keep-router-state': true,
+  });
+})
 
 let app = undefined;
 let router = undefined;
