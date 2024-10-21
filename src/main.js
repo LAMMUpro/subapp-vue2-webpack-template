@@ -4,8 +4,8 @@ import VueRouter from 'vue-router';
 import CONSTS from '@/utils/CONSTS';
 import { baseRoutes } from '@/router';
 import { parseRoutesMetaParentComponent } from '@/router/helper';
-import { isTopApp, sendDataDown, sendDataUp, MicroAppInit } from 'micro-app-tools';
-import { generateDataListener } from 'micro-app-tools/listener';
+import { isTopApp, sendDataDown, sendDataUp, SubMicroAppInit } from 'micro-app-tools';
+import { generateDataListener } from 'micro-app-tools/vue2/index';
 import { MicroAppConfig, MicroComponentSlotMap, setMicroAppInitFunction } from 'micro-app-tools/data';
 import microApp from '@micro-zoe/micro-app';
 
@@ -21,7 +21,7 @@ MicroAppConfig.subAppSettingList = window._subAppSettingList_;
  */
 setMicroAppInitFunction(() => {
   /** 初始化微前端配置 */
-  MicroAppInit({
+  SubMicroAppInit({
     env: process.env.NODE_ENV === 'development' ? 'localhost' : 'master',
     tagName: CONSTS.microAppTagName,
     dataListener: generateDataListener({
@@ -50,7 +50,7 @@ setMicroAppInitFunction(() => {
         });
       },
     }),
-    subAppSettingList: window._subAppSettingList_,
+    subAppSettingList: window._subAppSettingList_ || [],
   });
 
   /** 
