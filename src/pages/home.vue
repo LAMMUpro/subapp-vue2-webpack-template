@@ -5,10 +5,10 @@
       style="text-align: center"
     >
       <MicroComponent
-        class="animation"
-        _is="UseSvg"
-        name="vue"
-        size="400px"
+        _is="Lottie"
+        :width="600"
+        :height="600"
+        :animation-link="getLottieJsonLink('front')"
       ></MicroComponent>
 
       <div>vue2子应用首页</div>
@@ -18,10 +18,14 @@
 
 <script>
 import MicroComponent from 'micro-app-tools/vue2/MicroComponent.vue';
+import { getLottieJsonLink } from '@/utils';
 
 export default {
   components: {
     MicroComponent,
+  },
+  methods: {
+    getLottieJsonLink,
   },
 };
 </script>
