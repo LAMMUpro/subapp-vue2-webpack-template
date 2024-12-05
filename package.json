@@ -10,6 +10,7 @@
   "dependencies": {
     "@micro-zoe/micro-app": "1.0.0-rc.15",
     "core-js": "^3.8.3",
+    "frame-less-ui": "1.0.9-alpha.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "vue": "^2.7.16",
@@ -20,13 +21,11 @@
     "@babel/preset-react": "^7.25.7",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "@vue/cli-shared-utils": "^4.5.0",
     "babel-loader": "^9.2.1",
     "local-tool": "^1.1.2",
     "sass": "~1.56.0",
     "sass-loader": "^16.0.1",
     "vue-template-compiler": "^2.6.14"
-  },
-  "resolutions": {
-    "strip-ansi": "6.0.1"
   }
 }
