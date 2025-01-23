@@ -6,8 +6,8 @@
     >
       <MicroComponent
         _is="Lottie"
-        width="100%"
-        height="100%"
+        width="50%"
+        height="50%"
         :animation-link="getLottieJsonLink('front')"
       ></MicroComponent>
 
