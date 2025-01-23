@@ -8,7 +8,7 @@
     "deploy": "s deploy -t s.master.yaml --use-local"
   },
   "dependencies": {
-    "@micro-zoe/micro-app": "1.0.0-rc.15",
+    "@micro-zoe/micro-app": "1.0.0-rc.19",
     "core-js": "^3.8.3",
     "frame-less-ui": "1.0.9-alpha.1",
     "react": "^18.3.1",
