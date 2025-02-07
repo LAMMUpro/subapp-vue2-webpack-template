@@ -1,50 +1,57 @@
 <template>
   <div class="">
-    <FlButton type="warning">按钮</FlButton>
     <section class="-m-card">
-      <h2 class="-m-title">paging-select(分页选择器)</h2>
-      <fl-paging-select
-        :id="info.id"
-        @update-id="info.id = $event.detail[0]"
-        :label="info.name"
-        @update-label="info.name = $event.detail[0]"
+      <h2 class="-m-title">vue2使用fl-paging-select</h2>
+      <fl-paging-select-v2
+        :value.sync="info.id"
+        :label.sync="info.name"
         :api="api"
-        immediate
         :optionSetting="{ label: 'name', id: 'id' }"
         style="width: 300px"
       >
-      </fl-paging-select>
+      </fl-paging-select-v2>
       <div class="mt-3">{{ info }}</div>
     </section>
 
     <section class="-m-card">
-      <h2 class="-m-title">button(按钮)</h2>
-      <fl-button type="primary">普通按钮</fl-button>
-      <fl-button
+      <h2 class="-m-title">vue2使用fl-qr-code</h2>
+      <fl-qr-code-v2
+        text="https://micro-admin-template.lammu.cn/micromain/demo/frame-less-ui"
+      ></fl-qr-code-v2>
+    </section>
+
+    <section class="-m-card">
+      <h2 class="-m-title">vue2使用fl-button</h2>
+      <fl-button-v2 type="primary">普通按钮</fl-button-v2>
+      <fl-button-v2
         class="ml-1"
         type="success"
-        >成功按钮</fl-button
+        >成功按钮</fl-button-v2
       >
-      <fl-button
+      <fl-button-v2
         class="ml-1"
         type="warning"
-        >警告按钮</fl-button
+        >警告按钮</fl-button-v2
       >
-      <fl-button
+      <fl-button-v2
         class="ml-1"
         type="danger"
-        >危险按钮</fl-button
+        >危险按钮</fl-button-v2
       >
     </section>
   </div>
 </template>
 
 <script>
-import FlButton from 'frame-less-ui/vue2/button';
+import FlButtonV2 from 'frame-less-ui/vue2/button';
+import FlPagingSelectV2 from 'frame-less-ui/vue2/paging-select';
+import FlQrCodeV2 from 'frame-less-ui/vue2/qr-code';
 
 export default {
   components: {
-    FlButton: FlButton,
+    FlButtonV2,
+    FlPagingSelectV2,
+    FlQrCodeV2,
   },
   data() {
     return {
